@@ -1,0 +1,24 @@
+{
+    "environment": "development",
+    "app": {
+        "domain": "localhost",
+        "cookie_domain": "localhost"
+    },
+    "server": {
+        "port": 3500
+    },
+    "database": {
+        "mongodb": {
+            "dbName": "assessment",
+            "protocol": "mongodb",
+            "host": "127.0.0.1",
+            "port": 8898
+        }
+    },
+    "cache": {
+        "redis": {
+            "host": "127.0.0.1",
+            "port": 8899
+        }
+    }
+}

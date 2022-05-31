@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:focal
+    container_name: mongodb
+    ports:
+      - "8898:27017"
+    volumes:
+      - ./data:/data/db
+    networks:
+      - assessment
+    environment:
+      - MONGO_INITDB_DATABASE=assessment
+  
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "8899:6379"
+    networks:
+      - assessment
+
+
+networks:
+  assessment:
+    driver: bridge
