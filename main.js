@@ -17,13 +17,14 @@ const numCPUs = require('os').cpus().length
 //     init()
 //     console.log(`Worker ${process.pid} started`)
 //   }
+
 init()
 
-  async function init() {
-    try {
-        await Bootstrap()
-    } catch (err) {
-        console.error("Fatal Error During Application Bootstrap >", err)
-        process.exit(1)
-    }
+async function init() {
+  try {
+      await Bootstrap()
+  } catch (err) {
+      console.error("Fatal Error During Application Bootstrap >", err)
+      process.exit(1)
   }
+}

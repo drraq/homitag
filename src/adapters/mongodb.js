@@ -6,11 +6,11 @@ module.exports = async ({ logger, config }) => {
 
     logger.info(`Initializing MongoDB Adapter >`)
 
-    const {dbName, protocol, username, password, host, port} = config.get('database').mongodb
+    const {dbName, protocol, username, password, host, port} = config.get('database:mongodb')
 
     let uri = `${protocol}://`
 
-    if (username && password) uri += `${user}:${password}@`
+    if (username && password) uri += `${username}:${password}@`
 
     uri += `${host}:${port}`
 
@@ -35,9 +35,6 @@ module.exports = async ({ logger, config }) => {
         const dbStats = await db.command({
             dbStats: 1,
         })
-
-        logger.info(`DB stats >`)
-        logger.info(`${JSON.stringify(dbStats, null, 2)}`)
 
         logger.info('[\u2713] MongoDB ready')
     } catch (err) {

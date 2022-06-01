@@ -4,6 +4,8 @@ const joi = require('joi')
 const _ = require('lodash')
 const jwt = require('jsonwebtoken')
 
+const encryptor = require('../helpers/encryptor')
+
 const container = awilix.createContainer()
 
 module.exports = async (options = {}) => {
@@ -19,7 +21,8 @@ module.exports = async (options = {}) => {
         logger: awilix.asValue(logger),
         joi: awilix.asValue(joi),
         _: awilix.asValue(_),
-        jwt : awilix.asValue(jwt)
+        jwt : awilix.asValue(jwt),
+        encryptor: awilix.asFunction(encryptor)
     })
 
     container.loadModules(
@@ -27,7 +30,8 @@ module.exports = async (options = {}) => {
             'handlers/**/*.js',
             'models/**/*.js',
             'schemas/**/*.js',
-            'services/**/*.js'
+            'services/**/*.js',
+            'validations/**/*.js',
         ],
         {
             cwd: path.resolve('src'),
