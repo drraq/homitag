@@ -21,7 +21,6 @@ services:
     networks:
       - assessment
 
-
 networks:
   assessment:
     driver: bridge

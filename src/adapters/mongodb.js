@@ -49,6 +49,4 @@ module.exports = async ({ logger, config }) => {
     }
 
     return db
-
-
 }
