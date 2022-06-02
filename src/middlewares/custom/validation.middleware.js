@@ -2,17 +2,18 @@ module.exports = (opts) => {
 
     const {logger} = opts
 
-    const createUser = (schema) => (req, res, next) => {
+    const validate = (schema, type) => (req, res, next) => {
         
-        const {body} = req
-        const {error} = schema.validate(body)
+        const toBeValidated = req[type]
+        const {error} = schema.validate(toBeValidated)
 
         if (error) {
             const {message} = error.details[0]
 
+            logger.error(`Validation Error: ${message}`)
             const BAD_REQUEST = 400
-            res.status(BAD_REQUEST).json({
-                ok: false,
+            res.json({
+                success: false,
                 message,
                 code: BAD_REQUEST
             })
@@ -20,7 +21,7 @@ module.exports = (opts) => {
     }
 
     return {
-        createUser
+        validate
     }
 
 }

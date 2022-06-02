@@ -28,10 +28,10 @@ module.exports = async (options = {}) => {
     container.loadModules(
         [
             'handlers/**/*.js',
+            'middlewares/custom/**/*.js',
             'models/**/*.js',
             'schemas/**/*.js',
             'services/**/*.js',
-            'validations/**/*.js',
         ],
         {
             cwd: path.resolve('src'),

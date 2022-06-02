@@ -1,12 +1,28 @@
 module.exports = () => {
 
-    const createUser = ({name, email, password}) => ({
+    const register = ({name, email, password}) => ({
         name,
         email,
         password
     })
 
+    const login = ({email, password}) => {
+        const query = {
+            email,
+            password
+        }
+
+        const options = {
+            projection: {
+                email: 1
+            }
+        }
+
+        return {query, options}
+    }
+
     return {
-        createUser
+        register,
+        login
     }
 }

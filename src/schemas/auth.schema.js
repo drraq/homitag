@@ -1,11 +1,11 @@
 module.exports = (opts) => {
 
-    const {logger, authHandler, authValidation, joi} = opts
+    const {logger, authHandler, validationMiddleware, joi} = opts
 
     const prefix = "/auth"
     
     const register = (app) => {
-        logger.info('Registering Route: auth > register ')
+        logger.info('Registering Route: Auth > Register >')
 
         const path = "/register"
 
@@ -15,17 +15,33 @@ module.exports = (opts) => {
             password: joi.string().required().custom(password),
         })
 
-        const validSchema = authValidation.createUser(schema)
+        const validSchema = validationMiddleware.validate(schema, 'body')
 
         const callbackArr = [validSchema]
-        const handler = authHandler.createUser
+        const handler = authHandler.register
 
         app.post(prefix + path, callbackArr, handler)
+    }
 
+    const login = (app) => {
+        logger.info('Registering Route: Auth > Login >')
+        const path = "/login"
+
+        const schema = joi.object().keys({
+            email: joi.string().required(),
+            password: joi.string().required(),
+        })
+
+        const validSchema = validationMiddleware.validate(schema, 'body')
+        const callbackArr = [validSchema]
+        const handler = authHandler.login
+
+        app.post(prefix + path, callbackArr, handler)
     }
 
     return {
-        register
+        register,
+        login
     }
 }
 
