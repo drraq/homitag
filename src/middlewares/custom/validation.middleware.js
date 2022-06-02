@@ -17,7 +17,10 @@ module.exports = (opts) => {
                 message,
                 code: BAD_REQUEST
             })
-        } else next()
+        } else {
+            logger.info(`Joi validation successful`)
+            next()
+        }
     }
 
     return {

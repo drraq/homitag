@@ -1,6 +1,6 @@
 module.exports = (opts) => {
 
-    const {logger, authHandler, validationMiddleware, joi} = opts
+    const {logger, authHandler, validationMiddleware, joi, tokenMiddleware} = opts
 
     const prefix = "/auth"
     
@@ -39,9 +39,23 @@ module.exports = (opts) => {
         app.post(prefix + path, callbackArr, handler)
     }
 
+    const test = (app) => {
+        const callbackArr = [tokenMiddleware.verify]
+
+        app.get(prefix + "/test", callbackArr, (req, res) => {
+            res.json({
+                success: true,
+                data: {
+                    claims: req.claims
+                }
+            })
+        })
+    }
+
     return {
         register,
-        login
+        login,
+        test
     }
 }
 
