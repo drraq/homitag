@@ -1,6 +1,6 @@
 module.exports = (opts) => {
 
-    const {logger, authHandler, validationMiddleware, joi, tokenMiddleware} = opts
+    const {logger, authHandler, validationMiddleware, joi} = opts
 
     const prefix = "/auth"
     

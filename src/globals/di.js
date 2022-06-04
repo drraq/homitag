@@ -3,6 +3,7 @@ const awilix = require('awilix')
 const joi = require('joi')
 const _ = require('lodash')
 const jwt = require('jsonwebtoken')
+const {ObjectId} = require('mongodb')
 
 const encryptor = require('../helpers/encryptor')
 
@@ -22,7 +23,8 @@ module.exports = async (options = {}) => {
         joi: awilix.asValue(joi),
         _: awilix.asValue(_),
         jwt : awilix.asValue(jwt),
-        encryptor: awilix.asFunction(encryptor)
+        encryptor: awilix.asFunction(encryptor),
+        ObjectId: awilix.asValue(ObjectId)
     })
 
     container.loadModules(
