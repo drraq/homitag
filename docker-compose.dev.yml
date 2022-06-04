@@ -12,7 +12,7 @@ services:
       - assessment
     environment:
       - MONGO_INITDB_DATABASE=assessment
-  
+
   redis:
     image: redis:latest
     container_name: redis

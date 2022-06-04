@@ -1,0 +1,42 @@
+{
+    "environment": "production",
+    "app": {
+        "domain": "origin",
+        "cookie_domain": "origin"
+    },
+    "server": {
+        "port": 3500
+    },
+    "database": {
+        "mongodb": {
+            "dbName": "assessment",
+            "protocol": "mongodb",
+            "host": "mongo",
+            "port": 27017
+        }
+    },
+    "cache": {
+        "redis": {
+            "host": "redis",
+            "port": 6379
+        }
+    },
+    "encryption": {
+        "hashing": {
+            "saltBytes": 16,
+            "rounds": 1000,
+            "length": 64,
+            "algo": "sha512"
+        },
+        "aes":{
+            "key": "<char[16]>",
+            "algorithm": "aes-128-cbc",
+            "cipherEncoding": "base64",
+            "messageEncoding": "utf8"
+        }
+    },
+    "jwt": {
+        "secret": "uuid",
+        "expiresIn": "5h"
+    }
+}

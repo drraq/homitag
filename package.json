@@ -15,7 +15,8 @@
         "name": "Rehan Q."
     },
     "scripts": {
-        "dev": "node main.js --environment development"
+        "dev": "node main.js --environment development",
+        "prod": "node main.js --environment production"
     },
     "dependencies": {
         "awilix": "^7.0.3",
