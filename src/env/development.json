@@ -29,14 +29,14 @@
             "algo": "sha512"
         },
         "aes":{
-            "key": "<char[16]>",
+            "key": "anyybBpX95t6_a6S",
             "algorithm": "aes-128-cbc",
             "cipherEncoding": "base64",
             "messageEncoding": "utf8"
         }
     },
     "jwt": {
-        "secret": "uuid",
+        "secret": "9e092fda-e408-11ec-8fea-0242ac120002",
         "expiresIn": "5h"
     }
 }
