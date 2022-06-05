@@ -7,12 +7,13 @@ module.exports = (opts) => {
         logger.info(`Get request received`)
 
         const query = req.query
-        const {error, count, genres} = await genreService.index(query)
+        const {error, totalCount, count, genres} = await genreService.index(query)
 
         if (_.isNil(error)) {
             res.json({
                 success: true,
                 data: {
+                    totalCount,
                     count,
                     genres
                 }
@@ -56,10 +57,11 @@ module.exports = (opts) => {
         logger.info(`Handler > Genre > Remove >`)
         logger.info(`Delete request received`)
 
-        const params = req.body
+        const params = req.params
         const {error, count, genre} = await genreService.remove(params)
 
         if (_.isNil(error)) {
+            logger.warn(`[${count}] document deleted`)
             res.json({
                 success: true,
                 data: {

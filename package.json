@@ -16,7 +16,8 @@
     },
     "scripts": {
         "dev": "node main.js --environment development",
-        "prod": "node main.js --environment production"
+        "prod": "node main.js --environment production",
+        "test": "jest"
     },
     "dependencies": {
         "awilix": "^7.0.3",
@@ -48,5 +49,9 @@
         "generator",
         "api",
         "joi"
-    ]
+    ],
+    "devDependencies": {
+        "axios": "^0.27.2",
+        "jest": "^28.1.0"
+    }
 }

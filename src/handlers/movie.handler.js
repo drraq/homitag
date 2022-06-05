@@ -7,12 +7,13 @@ module.exports = (opts) => {
         logger.info(`Get request received`)
 
         const query = req.query
-        const {error, count, movies} = await movieService.index(query)
+        const {error, totalCount, count, movies} = await movieService.index(query)
 
         if (_.isNil(error)) {
             res.json({
                 success: true,
                 data: {
+                    totalCount,
                     count,
                     movies
                 }
@@ -56,10 +57,11 @@ module.exports = (opts) => {
         logger.info(`Handler > Movie > Remove >`)
         logger.info(`Delete request received`)
 
-        const params = req.body
+        const params = req.params
         const {error, count, movie} = await movieService.remove(params)
 
         if (_.isNil(error)) {
+            logger.warn(`[${count}] documents deleted`)
             res.json({
                 success: true,
                 data: {

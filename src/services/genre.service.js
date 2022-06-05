@@ -15,10 +15,10 @@ module.exports = (opts) => {
 
             const {options} = genreModel.index(params)
             const cursor = col.find({}, options).skip((page - 1) * pageSize).limit(pageSize)
-            const count = await cursor.count()
+            const totalCount = await col.estimatedDocumentCount()
             const genres = await cursor.toArray()
 
-            return {count, genres}
+            return {totalCount, count: genres.length, genres}
 
         } catch (err) {
             logger.info(`Service > Genre > Index >`)
@@ -59,7 +59,7 @@ module.exports = (opts) => {
             const {value} = result
             const {n} = result['lastErrorObject']
 
-            return {count: n, genre: value}
+            return {count: n, genre: value ?? {}}
 
         } catch (err) {
             logger.info(`Service > Genre > Remove >`)

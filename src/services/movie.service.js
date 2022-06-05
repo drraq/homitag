@@ -15,10 +15,10 @@ module.exports = (opts) => {
 
             const {options} = movieModel.index(params)
             const cursor = col.find({}, options).skip((page - 1) * pageSize).limit(pageSize)
-            const count = await cursor.count()
+            const totalCount = await col.estimatedDocumentCount()
             const movies = await cursor.toArray()
 
-            return {count, movies}
+            return {totalCount, count: movies.length, movies}
 
         } catch (err) {
             logger.info(`Service > Movie > Index >`)
@@ -59,7 +59,7 @@ module.exports = (opts) => {
             const {value} = result
             const {n} = result['lastErrorObject']
 
-            return {count: n, movie: value}
+            return {count: n, movie: value ?? {}}
 
         } catch (err) {
             logger.info(`Service > Movie > Remove >`)

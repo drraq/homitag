@@ -51,7 +51,7 @@ module.exports = (opts) => {
     // Genre ID is required in body of the request
     const remove = (app) => {
         logger.info('Registering Route: Movie > Remove >')
-        const path = "/delete"
+        const path = "/delete/:id"
 
         // Body of the request must contain `id` field
         // id is the mongodb object ID (24 characters hex)
@@ -59,7 +59,7 @@ module.exports = (opts) => {
             id: joi.string().hex().length(24).required()
         })
 
-        const validSchema = validationMiddleware.validate(schema, 'body')
+        const validSchema = validationMiddleware.validate(schema, 'params')
         const callbackArr = [tokenMiddleware.verify, validSchema]
 
         // Request-Response cycle ends here
