@@ -53,7 +53,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To list all genres",
                                 method: "GET",
-                                endpoint: "/genres",
+                                endpoint: "/genre",
                                 query: {
                                     page: "<integer>",
                                     pageSize: "<integer>",
@@ -64,7 +64,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To add a genre",
                                 method: "POST",
-                                endpoint: "/genres/add",
+                                endpoint: "/genre/add",
                                 body: {
                                     name: "<string>",
                                     description: "<string>"
@@ -73,7 +73,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To delete a genre",
                                 method: "DELETE",
-                                endpoint: "/genres/delete/:id",
+                                endpoint: "/genre/delete/:id",
                                 path: {
                                     id: "<string[24]>"
                                 }
@@ -81,7 +81,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To show details of a genre",
                                 method: "GET",
-                                endpoint: "/genres/show/:id",
+                                endpoint: "/genre/show/:id",
                                 path: {
                                     id: "<string[24]>"
                                 }
@@ -91,7 +91,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To list all movies",
                                 method: "GET",
-                                endpoint: "/movies",
+                                endpoint: "/movie",
                                 query: {
                                     page: "<integer>",
                                     pageSize: "<integer>",
@@ -102,7 +102,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To add a movie",
                                 method: "POST",
-                                endpoint: "/movies/add",
+                                endpoint: "/movie/add",
                                 body: {
                                     name: "<string>",
                                     description: "<string>",
@@ -115,7 +115,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To delete a movie",
                                 method: "DELETE",
-                                endpoint: "/movies/delete/:id",
+                                endpoint: "/movie/delete/:id",
                                 path: {
                                     id: "<string[24]>"
                                 }
@@ -123,7 +123,7 @@ module.exports = async (app, container) => {
                             {
                                 description: "To show details of a movie",
                                 method: "GET",
-                                endpoint: "/movies/show/:id",
+                                endpoint: "/movie/show/:id",
                                 path: {
                                     id: "<string[24]>"
                                 }
