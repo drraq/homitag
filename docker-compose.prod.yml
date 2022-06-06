@@ -9,6 +9,8 @@ services:
       - assessment
     ports:
       - "9000:3500"
+    volumes:
+      - ./logs:/app/logs
 
   mongo:
     image: mongo:focal
